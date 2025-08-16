@@ -1,6 +1,0 @@
-{
-  "name": "agent-tracking-poc",
-  "private": true,
-  "dependencies": { "http-message-signatures": "^1.0.4" }
-}
-
