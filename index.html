@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agent Tracking PoC</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+      body { font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial; max-width: 720px; margin: 48px auto; padding: 0 16px; }
+      .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px; }
+      a.button { display: inline-block; padding: 10px 16px; border: 1px solid #111; border-radius: 10px; text-decoration: none; }
+      code { background: #f5f5f5; padding: 2px 6px; border-radius: 6px; }
+    </style>
+  </head>
+  <body>
+    <h1>Agent Tracking PoC</h1>
+    <div class="card">
+      <p><strong>Evaluator instructions</strong> — In ChatGPT, say:</p>
+      <p><code>Use the web. Go to https://YOUR-DEPLOY-URL/?sid=ASHATEST123, then click the link on the page that says "I was here".</code></p>
+      <ol>
+        <li>Visiting the page triggers a tracking pixel request to <code>/api/p.gif?e=load</code>.</li>
+        <li>Clicking the link below triggers <code>/api/p.gif?e=click</code>.</li>
+      </ol>
+      <p>Replace <code>ASHATEST123</code> with a unique run ID for each test.</p>
+
+      <!-- Tracking pixel (no-JS). The Referer contains the page URL including ?sid=... -->
+      <img src="/api/p.gif?e=load" alt="" width="1" height="1" style="opacity:0; width:1px; height:1px;" referrerpolicy="strict-origin-when-cross-origin" />
+
+      <p>
+        <a class="button" href="/api/p.gif?e=click">I was here</a>
+      </p>
+
+      <p style="color:#555">Tip: If you want a second page, just create <code>step2.html</code> with the same pixel and link.</p>
+    </div>
+  </body>
+</html>
